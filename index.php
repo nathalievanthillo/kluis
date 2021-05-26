@@ -12,7 +12,7 @@
 
 <body>
     <div class="container">
-        <div class="text">TRY TO OPEN THE SAFE!</div>
+        <div class="text">OPEN DE KLUIS!</div>
         <div class="page">
             <div class="title">
                 <img src="images/closed-locker.svg">
@@ -20,9 +20,9 @@
             </div>
 
             <form action="#" method="POST">
-                <label>Enter the code</label>
+                <label>Vul de code in</label>
                 <input type="password" id="code" name="code" placeholder="Code">
-                <button type="submit" name="Open Locker" id="btnSubmit">CHECK CODE</button>
+                <button type="submit" name="Open Locker" id="btnSubmit">CONTROLEER CODE</button>
 
             </form>
 
