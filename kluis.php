@@ -18,6 +18,12 @@ if (!empty($_POST)) {
     fclose($file);
 };
 
+if (!empty($_POST['reset'])) {
+    $reset_msg = "";
+    $file = fopen("open_close.txt", "w") or die("Doesn't work");
+    $fail = "close";
+    fwrite($file,  $fail);
+}
 ?>
 
 
@@ -49,6 +55,7 @@ if (!empty($_POST)) {
                 <label>Vul de code in</label>
                 <input type="password" id="code" name="code" placeholder="Voer de code in">
                 <button type="submit" name="open" id="btnSubmit">CONTROLEER CODE</button>
+                <button type="submit" name="reset" id="btnReset">Reset</button>
 
             </form>
 

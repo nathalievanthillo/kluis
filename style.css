@@ -123,6 +123,10 @@ form button:active{
     transform: scale(0.995);
 }
 
+form #btnReset{
+    background:gray;
+}
+
 
 form .option{
     color: #5a5a5a;
