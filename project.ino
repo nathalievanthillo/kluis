@@ -6,22 +6,30 @@ extern "C" {
   #include <user_interface.h>
 }
 
-//Hieronder kan je de SSID en Wachtwoord instellen.
+// SSID en Wachtwoord instellen.
 const char* ssid     = "Kevin";
 const char* password = "vx5j5MCdmamb";
 
-//wifi kevin: vx5j5MCdmamb
-
+//Mac adress geset
 uint8_t mac[6] {0x5C, 0xCF, 0x7F, 0x80, 0x57, 0x97};
 
-
+//host name geset
 const char* host = "project-kluis.vanthillonathalie.be";
+
+//lege string om straks te gebruiken met info van de site
+String line = "";
+int servo = 4; // servo motor aangesloten op pin 4
+int servoPosOpen = 135; // servo draait naar 100 graden
+int servoPosLocked = 0; // de servo motor draait naar 0 graden
+Servo servoLock; // naam van de servo motor
 
 void setup() {
   Serial.begin(115200);
   Serial.println();
+ servoLock.attach(servo); // link de naam van de servo motor met de pin (4)
   
-  //De volgende lijn veranderd het MAC adres van de ESP8266
+  
+  //verander het MAC adres van de ESP8266
   wifi_set_macaddr(0, const_cast<uint8*>(mac)); 
   
   WiFi.mode(WIFI_STA);
@@ -69,16 +77,23 @@ void loop() {
                "Connection: close\r\n\r\n");
   delay(500);
   
-  // Alles lezen en afprinten naar de seriele poort.
-  // Merk op dat ook de antwoord headers worden afgedrukt!
+    // Alles lezen en afprinten naar de seriele poort.
   while(client.available()){
-    String line = client.readStringUntil('\n');
+   line = client.readStringUntil('\n');
     Serial.println(line);
   }
+
+  if(line == "open"){ //als wat er in het .txt document "open" staat,
+         servoLock.write(servoPosOpen); // de servo motor staat op 0 graden
+      } else if (line == "close"){ //als wat er in het .txt document "close" staat,
+          servoLock.write(servoPosLocked); // servo motor staat op 100 graden
+      }
+  
+  
 
   // De verbinding met de server sluiten 
   Serial.println();
   Serial.println("closing connection");
   client.stop();
-  delay(30000);
+  delay(5000);
 }
