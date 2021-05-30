@@ -3,24 +3,26 @@
 
 if (!empty($_POST)) {
 
+
+    //zodat je niet zomaar naar de welcome.php kan gaan
     session_start();
-    $file = fopen("open_close.txt", "w") or die("Doesn't work");
-    if ($_POST['code'] == "2021") {
-        $_SESSION["allowed"] = true;
+    $file = fopen("open_close.txt", "w") or die("Doesn't work"); //txt file 
+    if ($_POST['code'] == "2021") { // code van de kluis
+        $_SESSION["allowed"] = true; // als je code juist hebt wordt je doorverwijst naar welcome.php
         header("Location: welcome.php");
         $open = "open";
         fwrite($file, $open);
     } else {
-        $error = "sorry, probeer nog eens";
+        $error = "sorry, probeer nog eens"; //foutieve code ingevoerd
         $fail = "close";
         fwrite($file,  $fail);
     }
     fclose($file);
 };
 
-if (!empty($_POST['reset'])) {
+if (!empty($_POST['reset'])) { // reset knop om terug te gaan en kluis te sluiten
     $reset_msg = "";
-    $file = fopen("open_close.txt", "w") or die("Doesn't work");
+    $file = fopen("open_close.txt", "w") or die("Doesn't work"); //txt file 
     $fail = "close";
     fwrite($file,  $fail);
 }
@@ -55,7 +57,7 @@ if (!empty($_POST['reset'])) {
                 <label>Vul de code in</label>
                 <input type="password" id="code" name="code" placeholder="Voer de code in">
                 <button type="submit" name="open" id="btnSubmit">CONTROLEER CODE</button>
-                <button type="submit" name="reset" id="btnReset">Reset</button>
+                <button type="submit" name="reset" id="btnReset">RESET</button>
 
             </form>
 
