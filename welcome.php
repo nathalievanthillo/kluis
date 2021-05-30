@@ -27,6 +27,9 @@
 </head>
 <body>
 
+<button><a href="kluis.php">Ga terug</a></button>
+
+
 <div class="wrapper">
   <div class="modal">
     <span class="emoji round">🍾</span>
