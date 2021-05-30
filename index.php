@@ -2,20 +2,20 @@
 
 
 if (!empty($_POST)) {
-   
+
     session_start();
-    
+    $file = fopen("open_close.txt", "w") or die("Doesn't work");
     if ($_POST['code'] == "2021") {
-
         $_SESSION["allowed"] = true;
-
         header("Location: welcome.php");
-        
+        $open = "open";
+        fwrite($file, $open);
     } else {
         $error = "sorry, probeer nog eens";
+        $fail = "close";
+        fwrite($file,  $fail);
     }
-
-    
+    fclose($file);
 };
 
 ?>

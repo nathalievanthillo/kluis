@@ -8,7 +8,9 @@ extern "C" {
 
 //Hieronder kan je de SSID en Wachtwoord instellen.
 const char* ssid     = "Kevin";
-const char* password = "ww";
+const char* password = "vx5j5MCdmamb";
+
+//wifi kevin: vx5j5MCdmamb
 
 uint8_t mac[6] {0x5C, 0xCF, 0x7F, 0x80, 0x57, 0x97};
 
@@ -57,7 +59,7 @@ void loop() {
   }
  
   // Het path klaar maken van hetgeen we willen van de host 
-  String url = "/index.htm";
+  String url = "/open_close.txt";
   Serial.print("Requesting URL: ");
   Serial.println(url);
   
