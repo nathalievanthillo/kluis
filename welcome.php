@@ -1,19 +1,12 @@
 <?php
-
+  //session wordt gestart
   session_start();
-
-
-  if($_SESSION["allowed"] != true){
+  if($_SESSION["allowed"] != true){ // wanneer je niet bent toegestaan wordt je terug naar kluis.php gestuurd
     header("Location: kluis.php"); 
 
   } 
 
-
 ?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,19 +37,19 @@
 
 <script>
 for(i=0; i<100; i++) {
-    // Random rotation
+    // Willekeurige rotatie
     var randomRotation = Math.floor(Math.random() * 360);
-      // Random Scale
+      // Random scale
     var randomScale = Math.random() * 1;
-    // Random width & height between 0 and viewport
+    // Willekeurige breedte & hoogte tussen 0 en viewport
     var randomWidth = Math.floor(Math.random() * Math.max(document.documentElement.clientWidth, window.innerWidth || 0));
     var randomHeight =  Math.floor(Math.random() * Math.max(document.documentElement.clientHeight, window.innerHeight || 500));
     
-    // Random animation-delay
+    // Willekeurige animatie-vertraging
     var randomAnimationDelay = Math.floor(Math.random() * 15);
     console.log(randomAnimationDelay);
   
-    // Random colors
+    // Willekeurige klauren
     var colors = ['#0CD977', '#FF1C1C', '#FF93DE', '#5767ED', '#FFC61C', '#8497B0']
     var randomColor = colors[Math.floor(Math.random() * colors.length)];
   
